@@ -28,8 +28,10 @@ public class BizServicimpl implements BizService{
 	}
 
 	@Override
-	public List<BizVO> viewTop10Data(Map map) {
+	public List<BizVO> viewTop10Data() {
 		// TODO Auto-generated method stub
-		return mapper.viewTop10Data(map);
+		return mapper.viewTop10Data();
 	}
+
+	
 }

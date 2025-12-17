@@ -2987,4 +2987,12 @@ input, select, textarea {
 			list-style: none;
 			padding-left: 0;
 		}
-	
+
+.login-label {
+	color:white;
+	font-size: 15px;
+}
+.header-font {
+	font-size: 20px;
+}
+

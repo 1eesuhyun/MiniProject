@@ -8,5 +8,5 @@ import com.sist.web.vo.*;
 public interface BizService {
 	public List<BizVO> businessListData(int start);
 	public int businessTotalPage();
-	public List<BizVO> viewTop10Data(Map map);
+	public List<BizVO> viewTop10Data();
 }

@@ -9,11 +9,11 @@ import com.sist.web.vo.MemberVO;
 @Mapper
 @Repository
 public interface MemberMapper {
-	@Select("SELECT COUNT(*) FROM member_1 "
+	@Select("SELECT COUNT(*) FROM member1 "
 			+ "WHERE id=#{id}")
 	public int memberIdCount(String id);
 	
-	@Select("SELECT id,name,sex,pwd,address FROM member_1 "
+	@Select("SELECT id,name,sex,pwd,address FROM member1 "
 			+ "WHERE id=#{id}")
 	public MemberVO memberInfoData(String id);
 }

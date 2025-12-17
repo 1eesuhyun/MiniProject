@@ -39,7 +39,6 @@ public class BizController {
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("endPage", endPage);
 		
-		model.addAttribute("blist", list);
 		model.addAttribute("main_html", "biz/list");
 		return "main/main";
 	}

@@ -20,7 +20,7 @@ public class MainController {
 	{
 		Map map=new HashMap();
 		map.put("table_name", "board");
-		List<BizVO> blist=bservice.viewTop10Data(map);
+		List<BizVO> blist=bservice.viewTop10Data();
 		
 		model.addAttribute("blist", blist);
 		model.addAttribute("main_html", "main/home");

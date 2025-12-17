@@ -25,7 +25,7 @@ public interface BizMapper {
 			+ "FROM (SELECT b_id,b_title,b_view_count "
 			+ "FROM board ORDER BY b_view_count DESC) "
 			+ "WHERE rownum<=7")
-	public List<BizVO> viewTop10Data(Map map);
+	public List<BizVO> viewTop10Data();
 	
 	
 }

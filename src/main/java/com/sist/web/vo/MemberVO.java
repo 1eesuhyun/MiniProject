@@ -1,5 +1,8 @@
 package com.sist.web.vo;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
-	private String id,name,address,sex,pwd;
+	private String id,name,address,sex,pwd,msg;
 }
