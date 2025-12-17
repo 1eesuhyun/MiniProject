@@ -9,9 +9,16 @@
 				<section id="header" class="wrapper">
 
 					<!-- Logo -->
-						<div id="logo">
-							<h1><a href="index.html">Escape Velocity</a></h1>
-							<p>A free responsive site template by HTML5 UP</p>
+						<div class="text-center" th:if="${session.id==null}" style="margin-top: 20px;">
+						 ID:<input type=text ref=id class="input-sm" size=15 v-model="id">
+						 &nbsp;
+						 PWD:<input type=password ref=pwd class="input-sm" size=15 v-model="pwd">
+						 &nbsp;
+						 <button class="btn-sm btn-primary" type="button" @click="login()">로그인</button>
+						</div>
+						<div class="row aln-right" th:if="${session.id!=null}">
+						 [[${session.name}]]님 로그인되었습니다&nbsp;&nbsp;&nbsp;&nbsp;
+						 <button class="btn-sm btn-primary" type="button" @click="logout()">로그아웃</button>
 						</div>
 
 					<!-- Nav -->
@@ -39,7 +46,7 @@
 								</li>
 								<li><a href="/board/list">커뮤니티</a></li>
 								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="/member/loginPage">No Sidebar</a></li>
+								<li><a href="/">No Sidebar</a></li>
 							</ul>
 						</nav>
 
