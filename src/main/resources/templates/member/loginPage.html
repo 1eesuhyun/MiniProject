@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="row aln-right" th:if="${session.id==null}">
+			 ID:<input type=text ref=id class="input-sm" size=15 v-model="id" >
+			 &nbsp;
+			 PWD:<input type=password ref=pwd class="input-sm" size=15 v-model="pwd">
+			 &nbsp;
+			 <button class="btn-sm btn-primary" type="button" @click="login()">로그인</button>
+			</div>
+			<div class="row aln-right" th:if="${session.id!=null}">
+			 [[${session.name}]]님 로그인되었습니다&nbsp;&nbsp;&nbsp;&nbsp;
+			 <button class="btn-sm btn-primary" type="button" @click="logout()">로그아웃</button>
+			</div>
+</body>
+</html>
