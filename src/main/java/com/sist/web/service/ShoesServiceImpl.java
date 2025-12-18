@@ -1,6 +1,7 @@
 package com.sist.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -29,32 +30,20 @@ public class ShoesServiceImpl implements ShoesService{
 	@Override
 	public ShoesVO shoesDetailData(int goods_id) {
 		// TODO Auto-generated method stub
-		mapper.shoesBookMark(goods_id);
+		mapper.shoesHitIncrement(goods_id);
 		return mapper.shoesDetailData(goods_id);
 	}
 
 	@Override
-	public List<ShoesVO> nikebrand() {
+	public List<ShoesVO> brandListData(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.nikebrand();
+		return mapper.brandListData(map);
 	}
 
 	@Override
-	public List<ShoesVO> adidasbrand() {
+	public int brandTotalPage(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.adidasbrand();
-	}
-
-	@Override
-	public List<ShoesVO> asicsbrand() {
-		// TODO Auto-generated method stub
-		return mapper.asicsbrand();
-	}
-
-	@Override
-	public List<ShoesVO> mihara_Yasuhirobrand() {
-		// TODO Auto-generated method stub
-		return mapper.mihara_Yasuhirobrand();
+		return mapper.brandTotalPage(map);
 	}
 
 }

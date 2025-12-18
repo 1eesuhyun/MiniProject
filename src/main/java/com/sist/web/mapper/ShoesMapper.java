@@ -8,9 +8,8 @@ import com.sist.web.vo.*;
 @Mapper
 @Repository
 public interface ShoesMapper {
-	@Select("SELECT goods_id,brand,img,name_kor,rownum "
-			+ "FROM(SELECT goods_id,rt_price,brand,img,name_kor,type,color "
-			+ "FROM shoes ORDER BY goods_id DESC) "
+	@Select("SELECT goods_id,img,name_kor "
+			+ "FROM shoes ORDER BY goods_id DESC "
 			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
 	public List<ShoesVO> shoesListData(int start);
 	
@@ -24,29 +23,17 @@ public interface ShoesMapper {
 	@Update("UPDATE shoes SET "
 			+ "hit=hit+1 "
 			+ "WHERE goods_id=#{goods_id}")
-	public void shoesBookMark(int goods);
+	public void shoesHitIncrement(int goods);
 	
-	@Select("SELECT * FROM shoes "
-			+ "WHERE brand = 'Nike' "
-			+ "FROM shoes ORDER BY goods_id DESC "
+	@Select("SELECT goods_id,img,name_kor "
+			+ "FROM shoes "
+			+ "WHERE brand=#{brand} "
+			+ "ORDER BY goods_id DESC "
 			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-	public List<ShoesVO> nikebrand();
+	public List<ShoesVO> brandListData(Map map);
 	
-	@Select("SELECT * FROM shoes "
-			+ "WHERE brand = 'Adidas' "
-			+ "FROM shoes ORDER BY goods_id DESC "
-			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-	public List<ShoesVO> adidasbrand();
+	@Select("SELECT CEIL(COUNT(*)/12.0) FROM shoes "
+			+ "WHERE brand=#{brand}")
+	public int brandTotalPage(Map map);
 	
-	@Select("SELECT * FROM shoes "
-			+ "WHERE brand = 'Asics' "
-			+ "FROM shoes ORDER BY goods_id DESC "
-			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-	public List<ShoesVO> asicsbrand();
-	
-	@Select("SELECT * FROM shoes "
-			+ "WHERE brand = 'Mihara Yasuhiro' "
-			+ "FROM shoes ORDER BY goods_id DESC "
-			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-	public List<ShoesVO> mihara_Yasuhirobrand();
 }

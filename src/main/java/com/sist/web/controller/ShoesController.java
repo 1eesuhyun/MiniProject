@@ -16,9 +16,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ShoesController {
 	private final ShoesService service;
-	private String[] column= {"","nike","adidas","asics","mihara_Yasuhiro"};
-	public void shoes_common(String page,Model model,String column)
+	
+	@GetMapping("/shoes/list")
+	public String shoes_list(@RequestParam(name="page",required = false) String page,Model model)
 	{
+		
 		if(page==null)
 			page="1";
 		int curpage=Integer.parseInt(page);
@@ -26,9 +28,6 @@ public class ShoesController {
 		List<ShoesVO> list=service.shoesListData(start);
 		int totalpage=service.shoesTotalPage();
 		
-		Map map=new HashMap();
-		map.put("column", column);
-		map.put("start", start);
 		
 		final int BLOCK=10;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
@@ -41,18 +40,40 @@ public class ShoesController {
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("endPage", endPage);
-		
-		model.addAttribute("main_html", column.replace("_", "/"));
+		model.addAttribute("main_html", "shoes/list");
+		return "main/main";
 	}
 	
-	@GetMapping("/shoes/list")
-	public String shoes_list(@RequestParam(name="page",required = false) String page,Model model)
+	@GetMapping("/shoes/brand")
+	public String shose_brand(@RequestParam(name="brand")String brand,@RequestParam(name="page",required = false)String page,Model model)
 	{
+		if(page==null)
+			page="1";
+		int curpage=Integer.parseInt(page);
+		int start=(curpage-1)*12;
+		Map map=new HashMap();
+		map.put("start", start);
+		map.put("brand", brand);
+		List<ShoesVO> list=service.brandListData(map);
+		int totalpage=service.brandTotalPage(map);
 		
+		final int BLOCK=10;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage)
+			endPage=totalpage;
+		
+		model.addAttribute("list", list);
+		model.addAttribute("curpage", curpage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("totalpage", totalpage);
+		model.addAttribute("brand", brand);
+		model.addAttribute("endPage", endPage);
 		
 		model.addAttribute("main_html", "shoes/list");
 		return "main/main";
 	}
+	
 	@GetMapping("/shoes/detail")
 	public String shoes_detail(@RequestParam("goods_id") int goods_id,Model model)
 	{
