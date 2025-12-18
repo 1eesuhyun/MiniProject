@@ -34,6 +34,6 @@ public class MemberServiceImpl implements MemberService{
 				vo.setMsg("NOPWD");
 			}
 		}
-		return null;
+		return vo;
 	}
 }

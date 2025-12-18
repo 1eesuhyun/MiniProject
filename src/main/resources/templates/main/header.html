@@ -17,14 +17,14 @@
 						<li><a href="#">Magna veroeros</a></li>
 						<li><a href="#">Etiam nisl</a></li>
 						<li><a href="#">Sed consequat</a>
-							<ul>
-								<li><a href="#">Lorem dolor</a></li>
-								<li><a href="#">Amet consequat</a></li>
-								<li><a href="#">Magna phasellus</a></li>
-								<li><a href="#">Etiam nisl</a></li>
-								<li><a href="#">Sed feugiat</a></li>
-							</ul></li>
+							</li>
 						<li><a href="#">Nisl tempus</a></li>
+					</ul></li>
+					<li><a href="/">신발</a>
+					<ul>
+						<li><a href="/shoes/list">신발 목록</a></li>
+						<li><a href="#">Nike</a></li>
+						<li><a href="#">Asics</a></li>
 					</ul></li>
 				<li><a href="/board/list">커뮤니티</a></li>
 				<li><a href="right-sidebar.html">Right Sidebar</a></li>
@@ -35,7 +35,7 @@
 						v-model="pwd"> &nbsp;
 					<button class="btn-sm btn-primary" type="button" @click="login()">로그인</button>
 				</div>
-				<div class="row aln-right" th:if="${session.id!=null}">
+				 <div class="row aln-right" th:if="${session.id!=null}">
 					[[${session.name}]]님 로그인되었습니다&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="btn-sm btn-primary" type="button" @click="logout()">로그아웃</button>
 				</div>
@@ -80,10 +80,10 @@
 					{
 						alert("아이디가 존재하지 않습니다")
 						this.id="";
-						this.pwd=="";
+						this.pwd="";
 						this.$refs.id.focus()
 					}
-					else if(response.data.msg==="NOPWD")
+					else if(response.data.msg==='NOPWD')
 					{
 						alert("비밀번호가 틀립니다")
 						this.pwd="";

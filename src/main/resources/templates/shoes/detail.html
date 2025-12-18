@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/assets/css/card.css}">
+</head>
+<body>
+	<div id="main-wrapper">
+		<div class="container detailcolor">
+			<div class="row">
+			 <table class="table">
+			 <tbody>
+			  <tr>
+			   <td width="30%" class="text-center" rowspan="8">
+			    <img th:src="${vo.img}" style="width: 300px;height: 300px;margin-top: 20px;" referrerpolicy="no-referrer">
+			   </td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">이름</td>
+			   <td width="55%">[[${vo.name_kor}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">English Name</td>
+			   <td width="55%">[[${vo.name_eng}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">브랜드</td>
+			   <td width="55%">[[${vo.brand}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">가격</td>
+			   <td width="55%">[[${vo.release_price}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">색상</td>
+			   <td width="55%">[[${vo.color}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">조회수</td>
+			   <td width="55%">[[${vo.hit}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">일련번호</td>
+			   <td width="55%">[[${vo.sku}]]</td>
+			  </tr>
+			  </tbody>
+			 </table>
+			 <table class="table">
+			  <tr>
+			   <td class="text-right">
+			    <a href="/shoes/list" class="btn btn-sm btn-primary">목록</a>
+			   </td>
+			  </tr>
+			  </table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
