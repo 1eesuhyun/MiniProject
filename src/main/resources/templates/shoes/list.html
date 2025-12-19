@@ -14,8 +14,9 @@
 						<a th:href="@{/shoes/detail(goods_id=${vo.goods_id})}"> <img th:src="${vo.img}"
 							style="width: 240px; height: 160px" referrerpolicy="no-referrer">
 							<div class="caption">
+							<p class="text-left"><span class="fontc"><b>[[${vo.brand}]]</b></span></p>
 								<p>[[${vo.name_kor}]]</p>
-								<p class="brandcolor">[[${vo.brand}]]</p>
+								
 							</div>
 						</a>
 					</div>

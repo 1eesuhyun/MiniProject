@@ -8,7 +8,7 @@ import com.sist.web.vo.*;
 @Mapper
 @Repository
 public interface ShoesMapper {
-	@Select("SELECT goods_id,img,name_kor "
+	@Select("SELECT goods_id,img,name_kor,brand "
 			+ "FROM shoes ORDER BY goods_id DESC "
 			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
 	public List<ShoesVO> shoesListData(int start);

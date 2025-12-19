@@ -2995,4 +2995,7 @@ input, select, textarea {
 .header-font {
 	font-size: 20px;
 }
-
+.fontc {
+	color: gray;	
+	font-size: 13px;
+}
