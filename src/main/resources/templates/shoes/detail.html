@@ -53,7 +53,165 @@
 			  </tr>
 			  </table>
 			</div>
+			  <!-- 댓글 -->
+			<div class="row aln-center" style="margin-top: 0px;">
+			  <table class="table">
+			   <tr>
+			   <td>
+			    <table class="table" v-for="rvo in list">
+			     <tr>
+			      <td class="text-left" width="80%">
+			      😎((rvo.name))&nbsp;((rvo.dbday))
+			      </td>
+			      <td class="text-right" width="20%">
+			       <span v-if="sessionId==rvo.id">
+			        <button type="button" class="btn-xs btn-info upbtn" :id="'u'+rvo.no" @click="replyUpdateForm(rvo.no)">수정</button>
+			        <button type="button" class="btn-xs btn-danger" @click="replyDelete(rvo.no)">삭제</button>
+			       </span>
+			      </td>
+			     </tr>
+			     <tr>
+			      <td colspan="2" class="text-left">
+			       <pre style="white-space: pre-wrap;background-color: white;border: none;">((rvo.msg))</pre>
+			      </td>
+			     </tr>
+			     <tr>
+			      <td colspan="2">
+			       <table style="display: none;" :id="'up'+rvo.no">
+			        <tr>
+			         <td>
+			          <textarea rows="4" cols="110" style="float:left" :id="'umsg'+rvo.no">((rvo.msg))</textarea>
+			          <button type="button" class="btn-info" style="width: 105px;height: 87px;float: left;" @click="replyUpdate(rvo.no)">수정하기</button>
+			         </td>
+			        </tr>
+			       </table>
+			      </td>
+			     </tr>
+			    </table>
+			    <table th:if="${session.id!=null}">
+			     <tr>
+			      <td>
+			       <textarea rows="4" cols="130" style="float: left;margin-left: 30px;" v-model="msg" ref="msg"></textarea>
+			       <button type="button" class="btn-info" style="width: 105px;height: 86px;float: left;" @click="insert()">글 쓰기</button>
+			      </td>
+			     </tr>
+			    </table>
+			    </td>
+			   </tr>
+			  </table>
+			  </div>
 		</div>
 	</div>
+	<script>
+	 const commentApp=Vue.createApp({
+		 	data(){
+		 		return {
+		 			list:[],
+		 			cno:'[[${vo.goods_id}]]',
+		 			sessionId:'[[${sessionId}]]',
+		 			msg:'',
+		 			type:'1',
+		 			up:false
+		 		}
+		 	},
+		 	mounted(){
+		 		axios.get('http://localhost/comment/list_vue/',{
+		 				params:{
+		 					cno:this.cno,
+		 					type:this.type
+		 				}
+		 			}).then(response=>{
+		 				console.log(response.data)
+		 				this.list=response.data.list
+		 				this.cno=response.data.cno
+		 				this.type=response.data.type
+		 				})
+		 		},
+		 		methods:{
+		 			insert(){
+		 				if(this.msg==="")
+		 				{
+		 					this.$refs.msg.focus()
+		 					return
+		 				}
+		 				axios.post('http://localhost/comment/insert_vue/',{
+		 					cno:this.cno,
+	 						type:this.type,
+	 						msg:this.msg
+		 					}).then(response=>{
+		 						console.log(response.data)
+		 						this.list=response.data.list
+		 						this.cno=response.data.cno
+		 						this.type=response.data.type
+		 					})
+		 					this.msg=""
+		 					this.$refs.msg.focus()
+		 			},
+		 			replyDelete(no){
+		 				axios.get('http://localhost/comment/delete_vue/',{
+		 						params:{
+		 							no:no,
+		 							cno:this.cno,
+		 							type:this.type
+		 						}
+		 					}).then(response=>{
+		 						console.log(response.data)
+		 						this.list=response.data.list
+		 						this.cno=response.data.cno
+		 						this.type=response.data.type
+		 						$('#up'+no).hide()
+		 						$('#u'+no).text("수정")
+		 						})
+		 			},
+		 			replyUpdateForm(no){
+		 				$('.ups').hide()
+		 				$('.upbtn').text("수정")
+		 				if(this.up===false)
+		 				{
+		 					this.up=true
+		 					$('#up'+no).show()
+		 					$('#u'+no).text("취소")
+		 				}
+		 				else
+		 				{
+		 					this.up=false
+		 					$('#up'+no).hide()
+		 					$('#u'+no).text("수정")
+		 				}
+		 			},
+		 			replyUpdate(no){
+		 				let msg=$('#umsg'+no).val()
+		 				if(msg==="")
+		 				{
+		 					$('#umsg'+no).focus()
+		 					return
+		 				}
+		 				axios.get('http://localhost/comment/update_vue/',{
+		 					params:{
+		 						no:no,
+		 						cno:this.cno,
+		 						type:this.type,
+		 						msg:msg
+		 					}
+		 				}).then(response=>{
+		 					console.log(response.data)
+		 					this.list=response.data.list
+		 					this.cno=response.data.cno
+		 					this.type=response.data.type
+		 					$('#up'+no).hide()
+		 					$('#u'+no).text("수정")
+		 				})
+		 			}
+		 		},
+		 		cmoputed:{
+		 			
+		 		},
+		 		components:{
+		 			
+		 		}
+		 })
+		 commentApp.config.compilerOptions.delimiters=['((','))']
+ 		 commentApp.mount("#main-wrapper")
+	</script>
 </body>
 </html>

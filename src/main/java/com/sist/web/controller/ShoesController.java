@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sist.web.service.ShoesService;
 import com.sist.web.vo.ShoesVO;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -72,9 +73,18 @@ public class ShoesController {
 	}
 	
 	@GetMapping("/shoes/detail")
-	public String shoes_detail(@RequestParam("goods_id") int goods_id,Model model)
+	public String shoes_detail(@RequestParam("goods_id") int goods_id,Model model,HttpSession session)
 	{
 		ShoesVO vo=service.shoesDetailData(goods_id);
+		String id=(String)session.getAttribute("id");
+		if(id==null)
+		{
+			model.addAttribute("sessionId", "");
+		}
+		else
+		{
+			model.addAttribute("sessionId", id);
+		}
 		model.addAttribute("vo", vo);
 		model.addAttribute("main_html", "shoes/detail");
 		return "main/main";
