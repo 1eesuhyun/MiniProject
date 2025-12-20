@@ -43,4 +43,40 @@ public class BizController {
 		return "main/main";
 	}
 	
+	@GetMapping("/biz/b_type")
+	public String biz_type(@RequestParam(name="page",required = false) String page,Model model,@RequestParam("b_type") String b_type)
+	{
+		if(page==null)
+			page="1";
+		int curpage=Integer.parseInt(page);
+		int start=(curpage-1)*12;
+		
+		List<BizVO> list=bservice.typeListData(b_type, start);
+		int totalpage=bservice.typeTotalPage(b_type);
+		
+		final int BLOCK=10;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		if(endPage>totalpage)
+			endPage=totalpage;
+		
+		model.addAttribute("list", list);
+		model.addAttribute("totalpage", totalpage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("curpage", curpage);
+		model.addAttribute("b_type", b_type);
+		
+		model.addAttribute("main_html", "biz/type_list");
+		return "main/main";
+	}
+	
+	@GetMapping("/biz/detail")
+	public String biz_detail(@RequestParam("b_id") String b_id,Model model)
+	{
+		BizVO vo=bservice.contentDetailData(b_id);
+		model.addAttribute("vo", vo);
+		model.addAttribute("main_html", "biz/detail");
+		return "main/main";
+	}
 }

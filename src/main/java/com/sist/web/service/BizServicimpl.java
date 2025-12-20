@@ -33,5 +33,23 @@ public class BizServicimpl implements BizService{
 		return mapper.viewTop10Data();
 	}
 
+	@Override
+	public List<BizVO> typeListData(String b_type, int start) {
+		// TODO Auto-generated method stub
+		return mapper.typeListData(b_type,start);
+	}
+
+	@Override
+	public int typeTotalPage(String b_type) {
+		// TODO Auto-generated method stub
+		return mapper.typeTotalPage(b_type);
+	}
+
+	@Override
+	public BizVO contentDetailData(String b_id) {
+		// TODO Auto-generated method stub
+		return mapper.contentDetailData(b_id);
+	}
+
 	
 }

@@ -2281,6 +2281,9 @@ input, select, textarea {
 		#footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6, #footer strong, #footer b, #footer a {
 			color: #fff;
 		}
+		#footer p{
+			font-size: 14px;
+		}
 
 		#footer hr {
 			border-top-color: #333;
@@ -2995,7 +2998,8 @@ input, select, textarea {
 .header-font {
 	font-size: 20px;
 }
-.fontc {
+.fontc,.ffont,.pfont {
 	color: gray;	
 	font-size: 13px;
 }
+

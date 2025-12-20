@@ -13,7 +13,7 @@
 						<a th:href="@{/biz/detail(b_id=${vo.b_id})}"> <img th:src="${vo.b_thumbnail}"
 							style="width: 240px; height: 150px" onerror="this.src='/images/noimage.png'">
 							<div class="caption">
-							<p class="text-left"><span class="ffont">[[|[${vo.b_filter}|]]]</span></p>
+							 <p class="text-left"><span class="ffont">[[|[${vo.b_filter}|]]]</span></p>
 								<p class="text-left">[[${vo.b_title}]]</p>
 							</div>
 						</a>
@@ -22,12 +22,12 @@
 				<div class="row" style="margin-bottom: 55px">
 					<ul class="pagination text-center">
 						<li th:if="${startPage>1}"><a
-							th:href="@{/biz/list(page=${startPage-1})}">&laquo;</a></li>
+							th:href="@{/biz/type_list(page=${startPage-1},b_type=${b_type})}">&laquo;</a></li>
 						<li th:each="i:${#numbers.sequence(startPage,endPage)}"
 							th:class="${curpage==i?'active':''}"><a
-							th:href="@{/biz/list(page=${i})}">[[${i}]]</a></li>
+							th:href="@{/biz/type_list(page=${i}, b_type=${b_type})}">[[${i}]]</a></li>
 						<li th:if="${endPage<totalpage}"><a
-							th:href="@{/biz/list(page=${endPage+1})}">&raquo;</a></li>
+							th:href="@{/biz/type_list(page=${endPage+1}, b_type=${b_type})}">&raquo;</a></li>
 					</ul>
 				</div>
 			</div>

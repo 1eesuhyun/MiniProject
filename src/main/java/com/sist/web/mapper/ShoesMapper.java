@@ -1,5 +1,6 @@
 package com.sist.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -25,15 +26,20 @@ public interface ShoesMapper {
 			+ "WHERE goods_id=#{goods_id}")
 	public void shoesHitIncrement(int goods);
 	
-	@Select("SELECT goods_id,img,name_kor "
+	@Select("SELECT goods_id,img,name_kor,release_price "
 			+ "FROM shoes "
 			+ "WHERE brand=#{brand} "
 			+ "ORDER BY goods_id DESC "
 			+ "OFFSET #{start} ROWS FETCH NEXT 12 ROWS ONLY")
-	public List<ShoesVO> brandListData(Map map);
+	public List<ShoesVO> brandListData(@Param("brand")String brand,@Param("start")int start);
 	
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM shoes "
 			+ "WHERE brand=#{brand}")
-	public int brandTotalPage(Map map);
+	public int brandTotalPage(@Param("brand")String brand);
 	
+	@Select("SELECT goods_id,img,name_kor,release_price,rownum"
+			+ "FROM (SELECT goods_id,img,name_kor,release_price "
+			+ "FROM shoes ORDER BY release_price DESC "
+			+ "WHERE rownum<=6")
+	public List<ShoesVO> priceTop6Data();
 }

@@ -13,12 +13,11 @@
 				<li class="current"><a href="/">Home</a></li>
 				<li><a href="/">컨텐츠</a>
 					<ul>
-						<li><a href="/biz/list">비즈니스 리스트</a></li>
-						<li><a href="#">Magna veroeros</a></li>
-						<li><a href="#">Etiam nisl</a></li>
-						<li><a href="#">Sed consequat</a>
-							</li>
-						<li><a href="#">Nisl tempus</a></li>
+						<li><a href="/biz/list">비즈니스</a></li>
+						<li><a href="/biz/b_type?b_type=생활라이프">생활라이프</a></li>
+						<li><a href="/biz/b_type?b_type=운동건강">운동/건강</a></li>
+						<li><a href="/biz/b_type?b_type=취미/자기개발">취미/자기개발</a>
+						<li><a href="/biz/b_type?b_type=기타">기타</a></li>
 					</ul></li>
 					<li><a href="/">Shoes</a>
 					<ul>
@@ -37,8 +36,8 @@
 						v-model="pwd"> &nbsp;
 					<button class="btn-sm btn-primary" type="button" @click="login()">로그인</button>
 				</div>
-				 <div class="row aln-right" th:if="${session.id!=null}">
-					[[${session.name}]]님 로그인되었습니다&nbsp;&nbsp;&nbsp;&nbsp;
+				 <div class="text-center" th:if="${session.id!=null}">
+					<span style="color: white;">[[${session.name}]]님 로그인되었습니다</span>&nbsp;&nbsp;&nbsp;&nbsp;
 					<button class="btn-sm btn-primary" type="button" @click="logout()">로그아웃</button>
 				</div>
 			</ul>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="main-wrapper">
+		<div class="container detailcolor">
+			<div class="row">
+			 <table class="table">
+			 <tbody>
+			  <tr>
+			   <td width="30%" class="text-center" rowspan="6">
+			    <img th:src="${vo.b_thumbnail}" style="width: 300px;height: 300px;margin-top: 20px;">
+			   </td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">제목</td>
+			   <td width="55%">[[${vo.b_title}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">타입</td>
+			   <td width="55%">[[${vo.b_type}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">필터</td>
+			   <td width="55%">[[${vo.b_filter}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">조회수</td>
+			   <td width="55%">[[${vo.b_view_count}]]</td>
+			  </tr>
+			  <tr>
+			   <td class="text-center" style="color: gray;" width="15%">대면 여부</td>
+			   <td width="55%">[[${vo.b_prod_on_off}]]</td>
+			  </tr>
+			  </tbody>
+			 </table>
+			 <table class="table">
+			 <tr>
+			  <td>[[${vo.b_content}]]</td>
+			 </tr>
+			  <tr>
+			   <td class="text-right">
+			    <a href="javascript:history.back()" class="btn btn-sm btn-primary">목록</a>
+			   </td>
+			  </tr>
+			  </table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

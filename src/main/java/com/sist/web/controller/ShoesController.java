@@ -51,11 +51,8 @@ public class ShoesController {
 			page="1";
 		int curpage=Integer.parseInt(page);
 		int start=(curpage-1)*12;
-		Map map=new HashMap();
-		map.put("start", start);
-		map.put("brand", brand);
-		List<ShoesVO> list=service.brandListData(map);
-		int totalpage=service.brandTotalPage(map);
+		List<ShoesVO> list=service.brandListData(brand, start);
+		int totalpage=service.brandTotalPage(brand);
 		
 		final int BLOCK=10;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
@@ -70,7 +67,7 @@ public class ShoesController {
 		model.addAttribute("brand", brand);
 		model.addAttribute("endPage", endPage);
 		
-		model.addAttribute("main_html", "shoes/list");
+		model.addAttribute("main_html", "shoes/brand_list");
 		return "main/main";
 	}
 	

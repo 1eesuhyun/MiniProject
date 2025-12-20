@@ -35,15 +35,20 @@ public class ShoesServiceImpl implements ShoesService{
 	}
 
 	@Override
-	public List<ShoesVO> brandListData(Map map) {
+	public List<ShoesVO> brandListData(String brand, int start) {
 		// TODO Auto-generated method stub
-		return mapper.brandListData(map);
+		return mapper.brandListData(brand,start);
 	}
 
 	@Override
-	public int brandTotalPage(Map map) {
+	public int brandTotalPage(String brand) {
 		// TODO Auto-generated method stub
-		return mapper.brandTotalPage(map);
+		return mapper.brandTotalPage(brand);
 	}
+
+	
+
+	
+	
 
 }
