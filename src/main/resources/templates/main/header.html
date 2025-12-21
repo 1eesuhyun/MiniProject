@@ -28,8 +28,16 @@
 						<li><a href="/shoes/brand?brand=Mihara Yasuhiro">Mihara Yasuhiro</a></li>
 					</ul></li>
 				<li><a href="/board/list">커뮤니티</a></li>
-				<li><a href="right-sidebar.html">Music</a></li>
-				<li><a href="/">No Sidebar</a></li>
+				<li><a href="/music/Top200_list">Music Top 200</a>
+				<li><a href="">장르별 차트</a>
+				 <ul>
+				  <li><a href="/music/list?cno=2">가요</a></li>
+				  <li><a href="/music/list?cno=3">POP</a></li>
+				  <li><a href="/music/list?cno=4">OST</a></li>
+				  <li><a href="/music/list?cno=5">트롯</a></li>
+				  <li><a href="/music/list?cno=6">Jazz</a></li>
+				 </ul>
+				</li>
 				<div class="text-center login-box" th:if="${session.id==null}" >
 					<span class="login-label">ID:</span><input type=text ref=id class="input-sm" size=15 v-model="id">
 					&nbsp;<span class="login-label">PWD:</span><input type=password ref=pwd class="input-sm" size=15

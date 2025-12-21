@@ -15,7 +15,7 @@
     </td>
    </tr>
   </table>
-   <table class="table">
+   <table class="table board-table">
     <thead>
      <tr class="success">
       <th class="text-center" width="10%">번호</th>
@@ -24,6 +24,7 @@
       <th class="text-center" width="20%">작성일</th>
       <th class="text-center" width="10%">조회수</th>
      </tr>
+     </thead>
      <tbody>
      <tr th:each="vo:${list}">
       <td class="text-center" width="10%">[[${vo.no}]]</td>
@@ -32,16 +33,17 @@
       <td class="text-center" width="20%">[[${vo.dbday}]]</td>
       <td class="text-center" width="10%">[[${vo.hit}]]</td>
      </tr>
-     <tr>
+     </tbody>
+   </table>
+   <table class="text-center">
+    <tr>
       <td colspan="5" class="text-center">
        <a th:href="@{/board/list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm btn-danger">이전</a>	
         [[${curpage}]] page / [[${totalpage}]]
        <a th:href="@{/board/list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm btn-danger">다음</a>
       </td>
      </tr>
-     </tbody>
-    </thead>
-   </table>
+     </table>
   </div>
  </div>
 </div>

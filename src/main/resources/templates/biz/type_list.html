@@ -19,8 +19,9 @@
 						</a>
 					</div>
 				</div>
-				<div class="row" style="margin-bottom: 55px">
-					<ul class="pagination text-center">
+			</div>
+			<div class="text-center" style="margin-bottom: 55px">
+					<ul class="pagination">
 						<li th:if="${startPage>1}"><a
 							th:href="@{/biz/type_list(page=${startPage-1},b_type=${b_type})}">&laquo;</a></li>
 						<li th:each="i:${#numbers.sequence(startPage,endPage)}"
@@ -30,7 +31,6 @@
 							th:href="@{/biz/type_list(page=${endPage+1}, b_type=${b_type})}">&raquo;</a></li>
 					</ul>
 				</div>
-			</div>
 		</div>
 	</div>
 </body>

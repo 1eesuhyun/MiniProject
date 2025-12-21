@@ -37,9 +37,4 @@ public interface ShoesMapper {
 			+ "WHERE brand=#{brand}")
 	public int brandTotalPage(@Param("brand")String brand);
 	
-	@Select("SELECT goods_id,img,name_kor,release_price,rownum"
-			+ "FROM (SELECT goods_id,img,name_kor,release_price "
-			+ "FROM shoes ORDER BY release_price DESC "
-			+ "WHERE rownum<=6")
-	public List<ShoesVO> priceTop6Data();
 }

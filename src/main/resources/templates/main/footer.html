@@ -16,14 +16,14 @@
 						<section class="feature-list small">
 							<h3 class="#">컨텐츠 Top 10</h3>
 							<ul class="style4">
-								<li th:each="vo:${blist}"><a href="#"><p>- [[${vo.b_title}]]</p></a>
+								<li th:each="vo:${blist}"><a th:href="@{/biz/detail(b_id=${vo.b_id})}"><p>- [[${vo.b_title}]]</p></a>
 								</li>
 							</ul>
 						</section>
 					</div>
 					<div class="col-3 col-6-medium col-12-small">
 						<section class="feature-list small">
-							<h3 class="#">실시간 뉴스</h3>
+							<h3 class="#">맛집 Top 10</h3>
 							<p>
 								<a href="#">info@untitled.tld</a>
 							</p>

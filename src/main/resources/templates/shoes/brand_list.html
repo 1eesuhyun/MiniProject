@@ -20,8 +20,9 @@
 						</a>
 					</div>
 				</div>
-				<div class="row" style="margin-bottom: 55px">
-					<ul class="pagination text-center">
+			</div>
+			<div class="text-center" style="margin-bottom: 55px">
+					<ul class="pagination">
 						<li th:if="${startPage>1}"><a th:href="@{/shoes/brand(page=${startPage-1},brand=${brand})}">&laquo;</a></li>
 						<li th:each="i:${#numbers.sequence(startPage,endPage)}" th:class="${curpage==i?'active':''}">
 						<a th:href="@{/shoes/brand(page=${i},brand=${brand})}">[[${i}]]</a>
@@ -29,7 +30,6 @@
 						<li th:if="${endPage<totalpage}"><a th:href="@{/shoes/brand(page=${endPage+1},brand=${brand})}">&raquo;</a></li>
 					</ul>
 				</div>
-			</div>
 		</div>
 	</div>
 </body>
