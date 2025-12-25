@@ -37,4 +37,9 @@ public interface ShoesMapper {
 			+ "WHERE brand=#{brand}")
 	public int brandTotalPage(@Param("brand")String brand);
 	
+	@Select("SELECT goods_id,name_kor,bookmark,rownum "
+			+ "FROM(SELECT goods_id,name_kor,bookmark "
+			+ "FROM shoes ORDER BY bookmark DESC) "
+			+ "WHERE rownum<=10")
+	public List<ShoesVO> shoesTop10Data();
 }

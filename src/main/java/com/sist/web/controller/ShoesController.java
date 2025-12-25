@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sist.web.service.BizService;
+import com.sist.web.service.MusicService;
 import com.sist.web.service.ShoesService;
 import com.sist.web.vo.ShoesVO;
 
@@ -17,6 +19,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ShoesController {
 	private final ShoesService service;
+	private final MusicService mservice;
+	private final BizService bservice;
 	
 	@GetMapping("/shoes/list")
 	public String shoes_list(@RequestParam(name="page",required = false) String page,Model model)
@@ -42,6 +46,10 @@ public class ShoesController {
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("main_html", "shoes/list");
+		
+		model.addAttribute("blist", bservice.viewTop10Data());
+		model.addAttribute("slist", service.shoesTop10Data());
+		model.addAttribute("mlist", mservice.musicTop10Data());
 		return "main/main";
 	}
 	
@@ -69,6 +77,10 @@ public class ShoesController {
 		model.addAttribute("endPage", endPage);
 		
 		model.addAttribute("main_html", "shoes/brand_list");
+		
+		model.addAttribute("blist", bservice.viewTop10Data());
+		model.addAttribute("slist", service.shoesTop10Data());
+		model.addAttribute("mlist", mservice.musicTop10Data());
 		return "main/main";
 	}
 	

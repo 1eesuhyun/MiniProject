@@ -14,6 +14,9 @@ import java.util.*;
 @RequiredArgsConstructor
 public class MainController {
 	private final BizService bservice;
+	private final ShoesService sservice;
+	private final MusicService mservice;
+	private final CafeService cservice;
 	
 	@GetMapping("/")
 	public String main_page(Model model)
@@ -22,7 +25,20 @@ public class MainController {
 		map.put("table_name", "board");
 		List<BizVO> blist=bservice.viewTop10Data();
 		
+		map.put("table_name", "shoes");
+		List<ShoesVO> slist=sservice.shoesTop10Data();
+		
+		map.put("table_name", "music");
+		List<MusicVO> mlist=mservice.musicTop10Data();
+		
+		map.put("table_name", "cafe");
+		List<CafeVO> clist=cservice.cafeList9Data();
+		
 		model.addAttribute("blist", blist);
+		model.addAttribute("slist", slist);
+		model.addAttribute("mlist", mlist);
+		model.addAttribute("clist", clist);
+		
 		model.addAttribute("main_html", "main/home");
 		return "main/main";
 	}

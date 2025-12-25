@@ -9,4 +9,5 @@ public interface ShoesService {
 	public ShoesVO shoesDetailData(int goods_id);
 	public List<ShoesVO> brandListData(String brand,int start);
 	public int brandTotalPage(String brand);
+	public List<ShoesVO> shoesTop10Data();
 }

@@ -4,7 +4,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sist.web.service.BizService;
 import com.sist.web.service.MusicService;
+import com.sist.web.service.ShoesService;
+
 import lombok.RequiredArgsConstructor;
 import java.util.*;
 import com.sist.web.vo.*;
@@ -13,6 +16,9 @@ import com.sist.web.vo.*;
 @RequiredArgsConstructor
 public class MusicController {
 	private final MusicService mservice;
+	private final BizService bservice;
+	private final ShoesService sservice;
+	
 	
 	@GetMapping("/music/Top200_list")
 	public String music_list(@RequestParam(name="page",required = false)String page,Model model)
@@ -35,6 +41,9 @@ public class MusicController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("totalpage", totalpage);
 		
+		model.addAttribute("blist", bservice.viewTop10Data());
+		model.addAttribute("slist", sservice.shoesTop10Data());
+		model.addAttribute("mlist", mservice.musicTop10Data());
 		model.addAttribute("main_html", "music/Top200_list");
 		return "main/main";
 	}

@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BizController {
 	private final BizService bservice;
+	private final ShoesService sservice;
+	private final MusicService mservice;
 	
 	@GetMapping("/biz/list")
 	public String business_list(@RequestParam(name="page",required = false)String page,Model model)
@@ -39,6 +41,10 @@ public class BizController {
 		model.addAttribute("totalpage", totalpage);
 		model.addAttribute("endPage", endPage);
 		
+		model.addAttribute("blist", bservice.viewTop10Data());
+		model.addAttribute("slist", sservice.shoesTop10Data());
+		model.addAttribute("mlist", mservice.musicTop10Data());
+
 		model.addAttribute("main_html", "biz/list");
 		return "main/main";
 	}
@@ -67,6 +73,10 @@ public class BizController {
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("b_type", b_type);
 		
+		model.addAttribute("blist", bservice.viewTop10Data());
+		model.addAttribute("slist", sservice.shoesTop10Data());
+		model.addAttribute("mlist", mservice.musicTop10Data());
+
 		model.addAttribute("main_html", "biz/type_list");
 		return "main/main";
 	}

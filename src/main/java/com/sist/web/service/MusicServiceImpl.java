@@ -41,6 +41,12 @@ public class MusicServiceImpl implements MusicService{
 		return mapper.musicDetailData(no);
 	}
 
+	@Override
+	public List<MusicVO> musicTop10Data() {
+		// TODO Auto-generated method stub
+		return mapper.musicTop10Data();
+	}
+
 
 
 

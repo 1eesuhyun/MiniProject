@@ -11,4 +11,5 @@ public interface MusicService {
 	
 	public int musicTotalPage();
 	public MusicVO musicDetailData(int no);
+	public List<MusicVO> musicTop10Data();
 }

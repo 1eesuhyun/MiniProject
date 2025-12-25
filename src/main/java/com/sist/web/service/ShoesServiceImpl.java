@@ -46,6 +46,12 @@ public class ShoesServiceImpl implements ShoesService{
 		return mapper.brandTotalPage(brand);
 	}
 
+	@Override
+	public List<ShoesVO> shoesTop10Data() {
+		// TODO Auto-generated method stub
+		return mapper.shoesTop10Data();
+	}
+
 	
 
 	
